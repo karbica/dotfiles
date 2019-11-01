@@ -6,9 +6,6 @@ fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
-# globals
-export INFURA_KEY=""
-
 # ls
 alias ls="\ls -G"
 alias ll="\ls -Gl"
