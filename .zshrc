@@ -6,13 +6,15 @@ fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
 prompt pure
 
-# ls
+# fs
 alias ls="\ls -G"
 alias ll="\ls -Gl"
 alias la="\ls -Gla"
 alias ..="\cd .."
 alias ...="\cd ../.."
 alias ....="\cd ../../.."
+alias df='\df -hT'
+alias du='\du -h'
 
 # grep
 alias g="\grep --color=auto"
@@ -24,10 +26,6 @@ alias p="ping"
 alias n="nslookup"
 alias d="dig"
 alias ssh="\ssh -v"
-
-# fs
-alias df='\df -hT'
-alias du='\du -h'
 
 # shortcuts
 alias c="clear"
