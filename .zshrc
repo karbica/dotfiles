@@ -1,9 +1,16 @@
 # reset
 unalias -m "*"
 
+# function paths
+fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
+
+# git completions
+#  https://github.com/git/git/tree/master/contrib/completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+autoload -Uz compinit ; compinit
+
 # prompt
-fpath+=("$HOME/.zsh/pure")
-autoload -U promptinit; promptinit
+autoload -Uz promptinit ; promptinit
 prompt pure
 
 # fs
