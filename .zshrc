@@ -5,7 +5,7 @@ unalias -m "*"
 fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
 
 # git completions
-#  https://github.com/git/git/tree/master/contrib/completion
+# https://github.com/git/git/tree/master/contrib/completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 autoload -Uz compinit ; compinit
 
