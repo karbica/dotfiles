@@ -2,6 +2,7 @@
 unalias -m "*"
 
 # function paths
+# https://github.com/sindresorhus/pure
 fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
 
 # git completions
@@ -43,4 +44,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+
+# go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
