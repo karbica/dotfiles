@@ -1,13 +1,14 @@
 [gpg]
-	program = gpg2
+	program = gpg
 [user]
 	name = Kevin Arbi
 	email = karbica@eml.cc
 [core]
-	color.ui = true
 	pretty = oneline
 	filemode = true
 	ignorecase = true
+[color]
+	ui = true
 [alias]
 	ci = commit
 	co = checkout
