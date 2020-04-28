@@ -3,6 +3,11 @@
 [user]
 	name = Kevin Arbi
 	email = karbica@eml.cc
+[core]
+	color.ui = true
+	pretty = oneline
+	filemode = true
+	ignorecase = true
 [alias]
 	ci = commit
 	co = checkout
@@ -13,5 +18,6 @@
 	brD = branch -D
 	cm = !git add -A && git commit -m
 	undo = reset HEAD~1 --mixed
+	unstage = reset HEAD --
 	amend = commit -a --amend
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

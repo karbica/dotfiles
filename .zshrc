@@ -25,8 +25,9 @@ alias df='\df -hT'
 alias du='\du -h'
 
 # grep
-alias g="\grep --color=auto"
-alias grep="\grep --color=auto"
+alias g="\grep -n"
+alias grep="\grep -n"
+export GREP_OPTIONS="--color=auto"
 
 # network
 alias myip="curl ifconfig.co/json"
@@ -48,4 +49,5 @@ export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 # go
 export GOPATH="$HOME/go"
+export GO111MODULE="on"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"

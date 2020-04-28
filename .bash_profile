@@ -43,15 +43,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 # grep
+alias g='grep -n'
 alias grep='grep -n'
 export GREP_OPTIONS='--color=auto'
-
-# git
-git config --global color.ui true
-git config --global format.pretty oneline
-git config --global core.fileMode true
-git config --global core.ignorecase true
-git config --global alias.unstage 'reset HEAD --'
 
 # networking
 alias myip='curl ipinfo.io -w "\n"'
@@ -61,3 +55,11 @@ alias openports='sudo lsof -i | grep LISTEN'
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# yarn
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+
+# go
+export GOPATH="$HOME/go"
+export GO111MODULE="on"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
