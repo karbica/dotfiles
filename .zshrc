@@ -49,5 +49,5 @@ export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
 # go
 export GOPATH="$HOME/go"
-export GO111MODULE="on"
+export GO111MODULE="auto"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
