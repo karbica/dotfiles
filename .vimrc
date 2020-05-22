@@ -159,11 +159,10 @@ set undofile
 " close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-" easily move through open buffers
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
-" useful mappings for managing tabs
+" cseful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -206,9 +205,37 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " always show the status line
 set laststatus=2
 
-" format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" turn off the mode line
+set noshowmode
 
-" set the length colomn
-" set column=80
-" highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+
+" HELPER FUNCTIONS
+
+" returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+
+
+
+
+" PLUGINS
+
+call plug#begin()
+
+" gruvbox color scheme
+Plug 'morhetz/gruvbox'
+
+" upgrade the status line
+Plug 'vim-airline/vim-airline'
+
+call plug#end()
+
+colorscheme gruvbox
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
