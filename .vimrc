@@ -1,4 +1,4 @@
-" TODO Think about making this configuration file work with both Vim and NeoVim.
+" TODO Think about making this configuration file work with both Vim and Neovim.
 
 
 
@@ -20,12 +20,12 @@ let mapleader = " "
 nmap <leader>w :w!<cr>
 
 " remove vi compatibility
-set nocompatible 
+set nocompatible
 
 " use the system clipboard as register
 set clipboard=unnamed
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -89,7 +89,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " add some margin to the left
-set foldcolumn=1
+" set foldcolumn=1
 
 " convert tab characters to spaces
 set expandtab
@@ -126,6 +126,9 @@ set background=dark
 " set standard encoding
 set encoding=utf8
 
+" enable true color support
+set termguicolors
+
 
 
 
@@ -142,10 +145,13 @@ set noswapfile
 set nobackup
 
 " set the location of the undo directory
-set undodir=~.config/nvim/undo
+set undodir=~/.config/nvim/undo
 
 " create an undo file per file
 set undofile
+
+" handle file types
+filetype plugin indent on
 
 
 
@@ -158,17 +164,22 @@ set undofile
 
 " close all the buffers
 map <leader>ba :bufdo bd<cr>
+map <leader>bd :bd<cr>
+map <leader>bl :bnext<CR>
+map <leader>bh :bprevious<cr>
 
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" cseful mappings for managing tabs
+" useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
+" useful mappings for managing splits
+map <leader>sj <C-W><C-J>
+map <leader>sk <C-W><C-K>
+map <leader>sh <C-W><C-H>
+map <leader>sl <C-W><C-L>
 
 " opens a new tab with the current buffer's path
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
@@ -176,7 +187,7 @@ map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 " switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" specify the behavior when switching between buffers 
+" specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -226,16 +237,28 @@ endfunction
 
 " PLUGINS
 
-call plug#begin()
+call plug#begin('~/.config/nvim/plugged')
 
 " gruvbox color scheme
 Plug 'morhetz/gruvbox'
 
+" ayu color scheme
+Plug 'ayu-theme/ayu-vim'
+
 " upgrade the status line
 Plug 'vim-airline/vim-airline'
 
+" language packs
+Plug 'sheerun/vim-polyglot'
+
+" fuzzy searching features
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
-colorscheme gruvbox
+let ayucolor="mirage"
+colorscheme ayu
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
