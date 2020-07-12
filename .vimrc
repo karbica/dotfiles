@@ -240,10 +240,10 @@ endfunction
 call plug#begin('~/.config/nvim/plugged')
 
 " gruvbox color scheme
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 
 " ayu color scheme
-Plug 'ayu-theme/ayu-vim'
+" Plug 'ayu-theme/ayu-vim'
 
 " upgrade the status line
 Plug 'vim-airline/vim-airline'
@@ -257,8 +257,8 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-let ayucolor="mirage"
-colorscheme ayu
+" let ayucolor="mirage"
+" colorscheme ayu
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
