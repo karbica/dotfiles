@@ -24,7 +24,7 @@ fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
 #   compaudit | xargs chmod g-w 
 #
 # This should take care of the warning every time a new ZSH shell is started.
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
 autoload -Uz compinit ; compinit
 
 # prompt
