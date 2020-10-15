@@ -57,18 +57,13 @@ alias ssh="\ssh -v"
 # shortcuts
 alias c="clear"
 
-# nvm
-# https://github.com/nvm-sh/nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
-# yarn
-# https://github.com/yarnpkg/yarn
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-
 # go
 # https://github.com/golang/go
 export GOPATH="$HOME/go"
 export GO111MODULE="auto"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+
+# volta
+# https://volta.sh/
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
