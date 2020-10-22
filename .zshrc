@@ -56,6 +56,8 @@ alias p="ping"
 alias n="nslookup"
 alias d="dig"
 alias ssh="\ssh -v"
+alias netcons='lsof -i'
+alias openports='sudo lsof -i | grep LISTEN'
 
 # shortcuts
 alias c="clear"
