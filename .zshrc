@@ -32,6 +32,9 @@ autoload -Uz compinit && compinit
 autoload -Uz promptinit && promptinit
 prompt pure
 
+# blocksize
+export BLOCKSIZE=1k
+
 # fs
 alias ls="\ls -G"
 alias ll="\ls -Gl"
@@ -57,8 +60,18 @@ alias ssh="\ssh -v"
 # shortcuts
 alias c="clear"
 
+# tldr
+function tldr {
+    curl cheat.sh/"$1"
+}
+
+# wttr
+function wttr {
+    curl wttr.in/"$1"
+}
+
 # go
-# https://github.com/golang/go
+# https://golang.org/
 export GOPATH="$HOME/go"
 export GO111MODULE="auto"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
