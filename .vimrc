@@ -1,11 +1,3 @@
-" TODO Think about making this configuration file work with both Vim and Neovim.
-
-
-
-
-
-" GENERAL
-
 " set the amount of lines to remember
 set history=500
 
@@ -28,12 +20,6 @@ set clipboard=unnamed
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
-
-
-
-
-" USER INTERFACE
 
 " set the amount of lines that keep the cursor vertical during movement
 set so=7
@@ -106,12 +92,6 @@ set nowrap
 " display results as search occurs
 set incsearch
 
-
-
-
-
-" COLORS & FONTS
-
 " turn on syntax coloring
 syntax on
 
@@ -128,12 +108,6 @@ set encoding=utf8
 
 " enable true color support
 set termguicolors
-
-
-
-
-
-" FILES & BACKUPS
 
 " set unix as the standard file type
 set ffs=unix,dos,mac
@@ -152,15 +126,6 @@ set undofile
 
 " handle file types
 filetype plugin indent on
-
-
-
-
-
-" MOVEMENT & BUFFERS
-
-" move between splits easier
-" TODO Use the leader for this.
 
 " close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -197,31 +162,15 @@ endtry
 " return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-
-
-
-
-" VISUAL MODE
-
 " use * or # to search for current selection
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-
-
-
-
-" STATUS LINE
 
 " always show the status line
 set laststatus=2
 
 " turn off the mode line
 set noshowmode
-
-
-
-" HELPER FUNCTIONS
 
 " returns true if paste mode is enabled
 function! HasPaste()
@@ -231,12 +180,7 @@ function! HasPaste()
     return ''
 endfunction
 
-
-
-
-
-" PLUGINS
-
+" vimp-plug
 call plug#begin('~/.config/nvim/plugged')
 
 " gruvbox color scheme
