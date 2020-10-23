@@ -51,16 +51,19 @@ alias grep="\grep -n"
 export GREP_OPTIONS="--color=auto"
 
 # network
-alias myip="curl ifconfig.co/json"
-alias p="ping"
-alias n="nslookup"
-alias d="dig"
+alias myip="\curl ifconfig.co/json"
+alias p="\ping"
+alias n="\nslookup"
+alias d="\dig"
 alias ssh="\ssh -v"
-alias netcons='lsof -i'
-alias openports='sudo lsof -i | grep LISTEN'
 
-# shortcuts
-alias c="clear"
+# terminal
+alias c="\clear"
+
+# port pid
+function lsport {
+    lsof -i:"$1"
+}
 
 # tldr
 function tldr {
