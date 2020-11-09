@@ -46,7 +46,7 @@ function wttr {
 
 # go
 # https://golang.org/
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/dev/.go"
 export GO111MODULE="auto"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
