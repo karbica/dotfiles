@@ -51,7 +51,7 @@ alias grep="\grep -n"
 export GREP_OPTIONS="--color=auto"
 
 # network
-alias myip="\curl ifconfig.co/json"
+alias myip="\curl -4 ifconfig.co/json"
 alias p="\ping"
 alias n="\nslookup"
 alias d="\dig"
