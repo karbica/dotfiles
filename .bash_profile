@@ -54,3 +54,11 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 # https://volta.sh/
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# rust
+# https://rust-lang.org
+if [[ -d "$HOME/.cargo" ]]; then
+    source "$HOME/.cargo/env"
+else
+    true
+fi
