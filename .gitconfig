@@ -9,6 +9,7 @@
 	ignorecase = true
 [color]
 	ui = true
+	editor = nvim
 [alias]
 	ci = commit
 	co = checkout

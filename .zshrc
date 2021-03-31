@@ -58,6 +58,8 @@ alias ssh="\ssh -v"
 
 # terminal
 alias c="\clear"
+alias tmux="\tmux -2"
+alias tm="\tmux -2"
 
 # show pids by port
 function lsport {
