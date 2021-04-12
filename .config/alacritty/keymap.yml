@@ -1,0 +1,29 @@
+key_bindings:
+  - { key: D,        mods: Command,       chars: "\x06\x25" } 
+  - { key: D,        mods: Command|Shift, chars: "\x06\x22" }
+  - { key: W,        mods: Command,       chars: "\x06\x78" }
+  - { key: H,        mods: Command,       chars: "\x06\x1b\x5b\x44" }
+  - { key: J,        mods: Command,       chars: "\x06\x1b\x5b\x42" }
+  - { key: K,        mods: Command,       chars: "\x06\x1b\x5b\x41" }
+  - { key: L,        mods: Command,       chars: "\x06\x1b\x5b\x43" }
+  - { key: T,        mods: Command,       chars: "\x06\x63" }
+  - { key: RBracket, mods: Command|Shift, chars: "\x06\x6e" }
+  - { key: LBracket, mods: Command|Shift, chars: "\x06\x70" }
+  - { key: Return,   mods: Command|Shift, chars: "\x06\x7a" }
+  - { key: Key1,     mods: Command,       chars: "\x06\x31" }
+  - { key: Key2,     mods: Command,       chars: "\x06\x32" }
+  - { key: Key3,     mods: Command,       chars: "\x06\x33" }
+  - { key: Key4,     mods: Command,       chars: "\x06\x34" }
+  - { key: Key5,     mods: Command,       chars: "\x06\x35" }
+  - { key: Key6,     mods: Command,       chars: "\x06\x36" }
+  - { key: Key7,     mods: Command,       chars: "\x06\x37" }
+  - { key: Key8,     mods: Command,       chars: "\x06\x38" }
+  - { key: Key9,     mods: Command,       chars: "\x06\x39" }
+  # - { key: Left,     mods: Command,       chars: "\x06\x7b" }
+  # - { key: Down,     mods: Command,       chars: "\x06\x7d" }
+  # - { key: Up,       mods: Command,       chars: "\x06\x7e" }
+  # - { key: Right,    mods: Command,       chars: "\x06\x7c" }
+  # - { key: Left,     mods: Command,       chars: "\x06\x48" }
+  # - { key: Down,     mods: Command,       chars: "\x06\x4a" }
+  # - { key: Up,       mods: Command,       chars: "\x06\x4b" }
+  # - { key: Right,    mods: Command,       chars: "\x06\x4c" }
