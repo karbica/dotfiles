@@ -34,6 +34,9 @@ prompt pure
 # blocksize
 export BLOCKSIZE=1k
 
+# man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # fs
 alias ls="\ls -G"
 alias ll="\ls -Gl"
@@ -63,7 +66,7 @@ alias tm="\tmux -2"
 
 # show pids by port
 function lsport {
-    sudo lsof -i:"$1"
+    lsof -i:"$1"
 }
 
 # tldr
