@@ -39,6 +39,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # fs
 alias ls="\ls -G"
+alias l="\ls -Gl"
 alias ll="\ls -Gl"
 alias la="\ls -Gla"
 alias ..="\cd .."
