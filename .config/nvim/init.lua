@@ -21,3 +21,69 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- PLUGINS
+cmd 'packadd paq-nvim'
+local paq = require('paq-nvim').paq
+paq {'savq/paq-nvim', opt=true}
+paq 'kjssad/quantum.vim'
+paq 'ayu-theme/ayu-vim'
+paq 'hoob3rt/lualine.nvim'
+paq 'tpope/vim-commentary'
+paq 'justinmk/vim-sneak'
+paq 'nvim-lua/popup.nvim'
+paq 'nvim-lua/plenary.nvim'
+paq 'nvim-telescope/telescope.nvim'
+
+-- OPTIONS
+g.mapleader = " "
+local indent = 2
+g["ayucolor"] = 'dark'
+cmd 'colorscheme quantum'
+opt('b', 'expandtab', true)
+opt('b', 'smartindent', true)
+opt('b', 'shiftwidth', indent)
+opt('b', 'tabstop', indent)
+opt('w', 'list', true)
+opt('w', 'number', true)
+opt('w', 'relativenumber', true)
+opt('w', 'wrap', false)
+opt('o', 'termguicolors', true)
+opt('o', 'hidden', true)
+opt('o', 'wildmode', 'list:longest')
+opt('o', 'ignorecase', true)
+opt('o', 'splitright', true)
+opt('o', 'splitbelow', true)
+opt('o', 'scrolloff', 4)
+opt('o', 'sidescrolloff', 8)
+
+-- MAPPINGS
+map('i', 'jj', '<Esc>');
+map('n', '<C-l>', '<cmd>noh<CR>')
+map('n', '<leader>hs', '<C-W>s<C-W>j<CR>')
+map('n', '<leader>vs', '<C-W>v<C-W>l<CR>')
+map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>')
+-- map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
+
+-- LUALINE
+require('lualine').setup{
+  options = {
+    section_separators = {'🮧', '🭋'},
+    component_separators = {'', ''}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  }
+}
