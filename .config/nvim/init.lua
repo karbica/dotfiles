@@ -37,6 +37,8 @@ paq 'nvim-telescope/telescope.nvim'
 paq 'nvim-treesitter/nvim-treesitter'
 paq {'lukas-reineke/indent-blankline.nvim', branch='lua'}
 paq 'windwp/nvim-autopairs'
+paq 'neovim/nvim-lspconfig'
+paq 'kabouzeid/nvim-lspinstall'
 
 -- COLORSCHEME
 g["tokyonight_style"] = "storm"
@@ -57,7 +59,8 @@ opt('w', 'signcolumn', 'yes')
 opt('w', 'listchars', 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»')
 opt('o', 'termguicolors', true)
 opt('o', 'hidden', true)
-opt('o', 'wildmode', 'list:longest')
+opt('o', 'wildmenu', true)
+opt('o', 'wildmode', 'list:full,full')
 opt('o', 'ignorecase', true)
 opt('o', 'smartcase', true)
 opt('o', 'splitright', true)
@@ -65,9 +68,15 @@ opt('o', 'splitbelow', true)
 opt('o', 'shiftround', true)
 opt('o', 'scrolloff', 4)
 opt('o', 'sidescrolloff', 8)
-opt('w', 'noswapfile', true)
+opt('o', 'showtabline', 2)
+opt('o', 'showmode', false)
+opt('o', 'cmdheight', 2)
+cmd 'set noswapfile' -- How to do this through Lua?
+-- map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+-- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 -- MAPPINGS
+map('', '<leader>y', '"+y')
 map('i', 'jj', '<Esc>');
 map('n', '<C-l>', '<cmd>noh<CR>')
 map('t', '<Esc>', '<C-\\><C-N>')
@@ -126,3 +135,26 @@ require('lualine').setup {
     lualine_z = {}
   }
 }
+
+-- INDENTLINE
+-- g['indent_blankline_filetype_exclude'] = "['help']"
+-- g['indent_blankline_buftype_exclude'] = "['terminal']"
+g['indentLine_fileTypeExclude'] = {'help'}
+g['indentLine_bufTypeExclude'] = {'terminal'}
+
+-- LSP
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
