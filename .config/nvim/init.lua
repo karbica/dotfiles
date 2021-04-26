@@ -68,7 +68,7 @@ opt('o', 'splitbelow', true)
 opt('o', 'shiftround', true)
 opt('o', 'scrolloff', 4)
 opt('o', 'sidescrolloff', 8)
-opt('o', 'showtabline', 2)
+opt('o', 'showtabline', 0)
 opt('o', 'showmode', false)
 opt('o', 'cmdheight', 2)
 cmd 'set noswapfile' -- How to do this through Lua?

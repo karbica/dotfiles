@@ -6,10 +6,10 @@
 [core]
 	pretty = oneline
 	filemode = true
-	ignorecase = true
+  ignorecase = true
+	editor = nvim
 [color]
 	ui = true
-	editor = nvim
 [alias]
 	ci = commit
 	co = checkout

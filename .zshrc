@@ -2,7 +2,7 @@
 unalias -m "*"
 
 # function paths
-fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
+fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
 
 # git completions
 # https://github.com/git/git/tree/master/contrib/completion
@@ -23,7 +23,7 @@ fpath=(~/.zsh "$HOME/.zsh/pure" $fpath)
 #   compaudit | xargs chmod g-w
 #
 # This should take care of the warning every time a new ZSH shell is started.
-zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+zstyle ':completion:*:*:git:*' script ~/.local/share/zsh/git-completion.bash
 autoload -Uz compinit && compinit
 
 # prompt
@@ -38,6 +38,7 @@ export BLOCKSIZE=1k
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # fs
+alias l="\ls -G"
 alias ls="\ls -G"
 alias l="\ls -Gl"
 alias ll="\ls -Gl"
@@ -45,6 +46,7 @@ alias la="\ls -Gla"
 alias ..="\cd .."
 alias ...="\cd ../.."
 alias ....="\cd ../../.."
+alias .....="\cd ../../../.."
 alias df='\df -hT'
 alias du='\du -h'
 
@@ -64,22 +66,22 @@ alias ssh="\ssh -v"
 alias c="\clear"
 alias tmux="\tmux -2"
 alias tm="\tmux -2"
+alias nv="nvim"
 
 # show pids by port
 function lsport {
-    lsof -i:"$1"
+  lsof -i:"$1"
 }
 
 # tldr
 function tldr {
-    curl cheat.sh/"$1"
+  curl cheat.sh/"$1"
 }
 
 # wttr
 function wttr {
-    curl wttr.in/"$1"
+  curl wttr.in/"$1"
 }
-
 # go
 # https://golang.org/
 export GOPATH="$HOME/dev/.go"
@@ -98,3 +100,9 @@ if [[ -d "$HOME/.cargo" ]]; then
 else
     true
 fi
+
+# TODO Delete after Neovim 0.5.0 release.
+function nvim-nightly() {
+  # TODO Implement fetching of Neovim nightlight from GitHub.
+}
+export PATH="$HOME/.local/nvim-osx64/bin:$PATH"
