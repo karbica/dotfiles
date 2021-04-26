@@ -15,12 +15,12 @@ fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
 #
 # Running this command will remove the group-writable permission on those directories:
 #
-#   chmod g-w /usr/local/share/zsh
-#   chmod g-w /usr/local/share/zsh/site-functions
+# 	chmod g-w /usr/local/share/zsh
+# 	chmod g-w /usr/local/share/zsh/site-functions
 #
 # Or more succinctly if there way more directories:
 #
-#   compaudit | xargs chmod g-w
+# 	compaudit | xargs chmod g-w
 #
 # This should take care of the warning every time a new ZSH shell is started.
 zstyle ':completion:*:*:git:*' script ~/.local/share/zsh/git-completion.bash
@@ -96,9 +96,9 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # rust
 # https://rust-lang.org
 if [[ -d "$HOME/.cargo" ]]; then
-    source "$HOME/.cargo/env"
+	source "$HOME/.cargo/env"
 else
-    true
+	true
 fi
 
 # TODO Delete after Neovim 0.5.0 release.

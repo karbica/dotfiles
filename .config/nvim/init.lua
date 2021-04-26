@@ -39,6 +39,7 @@ paq {'lukas-reineke/indent-blankline.nvim', branch='lua'}
 paq 'windwp/nvim-autopairs'
 paq 'neovim/nvim-lspconfig'
 paq 'kabouzeid/nvim-lspinstall'
+paq 'hrsh7th/nvim-compe'
 
 -- COLORSCHEME
 g["tokyonight_style"] = "storm"
@@ -71,6 +72,7 @@ opt('o', 'sidescrolloff', 8)
 opt('o', 'showtabline', 0)
 opt('o', 'showmode', false)
 opt('o', 'cmdheight', 2)
+opt('o', 'completeopt', 'menuone,noselect')
 cmd 'set noswapfile' -- How to do this through Lua?
 -- map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 -- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
@@ -159,3 +161,28 @@ require'lspinstall'.post_install_hook = function ()
   setup_servers() -- reload installed servers
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
+
+-- COMPE
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+  };
+}
