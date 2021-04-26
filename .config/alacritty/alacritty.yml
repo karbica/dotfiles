@@ -9,7 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
- - ~/.config/alacritty/theme.yml
+ - ~/.config/alacritty/colorscheme.yml
  - ~/.config/alacritty/keymap.yml
 
 # Any items in the `env` entry below will be added as
@@ -158,14 +158,14 @@ font:
   # spacing.
   offset:
     x: 0
-    y: 4
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 0
-    y: 2
+    y: 1
 
   # Thin stroke font rendering (macOS only)
   #
