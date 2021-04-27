@@ -103,6 +103,21 @@ fi
 
 # TODO Delete after Neovim 0.5.0 release.
 function nvim-nightly() {
-  # TODO Implement fetching of Neovim nightlight from GitHub.
+  pushd ~/.local > /dev/null
+  echo "Changing current directory to: $(pwd)"
+  echo "Fetching nightly Neovim binary... "
+  curl -sLO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+  if [[ $? -ne 0 ]]
+  then
+    echo "Fetching the binary failed, check what happened to release files. (https://github.com/neovim/neovim/releases)"
+    popd > /dev/null
+    exit 1
+  fi
+  echo "Extracting archive file..."
+  tar xzvf nvim-macos.tar.gz
+  echo "Removing archive file..."
+  rm nvim-macos.tar.gz
+  echo "Done!"
+  popd > /dev/null
 }
 export PATH="$HOME/.local/nvim-osx64/bin:$PATH"
