@@ -22,24 +22,24 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- PLUGINS
-cmd 'packadd paq-nvim'
-local paq = require('paq-nvim').paq
-paq {'savq/paq-nvim', opt=true}
-paq 'kjssad/quantum.vim'
-paq 'ayu-theme/ayu-vim'
-paq 'folke/tokyonight.nvim'
-paq 'hoob3rt/lualine.nvim'
-paq 'tpope/vim-commentary'
-paq 'justinmk/vim-sneak'
-paq 'nvim-lua/popup.nvim'
-paq 'nvim-lua/plenary.nvim'
-paq 'nvim-telescope/telescope.nvim'
-paq 'nvim-treesitter/nvim-treesitter'
-paq {'lukas-reineke/indent-blankline.nvim', branch='lua'}
-paq 'windwp/nvim-autopairs'
-paq 'neovim/nvim-lspconfig'
-paq 'kabouzeid/nvim-lspinstall'
-paq 'hrsh7th/nvim-compe'
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  use 'kjssad/quantum.vim'
+  use 'ayu-theme/ayu-vim'
+  use 'folke/tokyonight.nvim'
+  use 'hoob3rt/lualine.nvim'
+  use 'tpope/vim-commentary'
+  use 'justinmk/vim-sneak'
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use {'lukas-reineke/indent-blankline.nvim', branch='lua'}
+  use 'windwp/nvim-autopairs'
+  use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
+  use 'hrsh7th/nvim-compe'
+end)
 
 -- COLORSCHEME
 g["tokyonight_style"] = "storm"
@@ -142,7 +142,7 @@ require('lualine').setup {
 -- INDENTLINE
 -- g['indent_blankline_filetype_exclude'] = "['help']"
 -- g['indent_blankline_buftype_exclude'] = "['terminal']"
-g['indentLine_fileTypeExclude'] = {'help'}
+g['indentLine_fileTypeExclude'] = {'help', 'packer'}
 g['indentLine_bufTypeExclude'] = {'terminal'}
 
 -- LSP
