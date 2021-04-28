@@ -75,6 +75,7 @@ opt('o', 'cmdheight', 2)
 opt('o', 'completeopt', 'menuone,noselect')
 cmd 'set noswapfile' -- How to do this through Lua?
 cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' -- Same here?
+cmd 'autocmd TermOpen * setlocal signcolumn=no' -- Same here?
 -- map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 -- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
@@ -82,7 +83,7 @@ cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' -- Same here?
 map('', '<leader>y', '"+y')
 map('i', 'jj', '<Esc>');
 map('n', '<C-l>', '<cmd>noh<CR>')
-map('t', '<Esc>', '<C-\\><C-N>')
+map('t', '<Esc>', '<C-\\><C-N>0')
 map('n', '<leader>hs', '<C-W>s<C-W>j<CR>')
 map('n', '<leader>vs', '<C-W>v<C-W>l<CR>')
 map('n', '<leader>5', '<cmd>luafile %<CR>')
