@@ -140,8 +140,6 @@ require('lualine').setup {
 }
 
 -- INDENTLINE
--- g['indent_blankline_filetype_exclude'] = "['help']"
--- g['indent_blankline_buftype_exclude'] = "['terminal']"
 g['indentLine_fileTypeExclude'] = {'help', 'packer'}
 g['indentLine_bufTypeExclude'] = {'terminal'}
 
