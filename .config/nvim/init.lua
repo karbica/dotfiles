@@ -34,7 +34,7 @@ require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use {'lukas-reineke/indent-blankline.nvim', branch='lua'}
+  -- use {'lukas-reineke/indent-blankline.nvim', branch='lua'}
   use 'windwp/nvim-autopairs'
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
