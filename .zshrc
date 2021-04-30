@@ -111,7 +111,8 @@ function nvim-nightly() {
   then
     echo "Fetching the binary failed, check what happened to release files. (https://github.com/neovim/neovim/releases)"
     popd > /dev/null
-    exit 1
+    echo "Changing current directory back to: $(pwd)"
+    return 1
   fi
   echo "Extracting archive file..."
   tar xzvf nvim-macos.tar.gz
