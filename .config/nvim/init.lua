@@ -36,6 +36,7 @@ require('packer').startup(function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   -- use {'lukas-reineke/indent-blankline.nvim', branch='lua'}
   use 'windwp/nvim-autopairs'
+  use 'lewis6991/gitsigns.nvim'
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
   use 'hrsh7th/nvim-compe'
@@ -84,10 +85,28 @@ map('', '<leader>y', '"+y')
 map('i', 'jj', '<Esc>');
 map('n', '<C-l>', '<cmd>noh<CR>')
 map('t', '<Esc>', '<C-\\><C-N>0')
+map('n', '<leader>5', '<cmd>luafile %<CR>')
+
+-- TELESCOPE
+map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>')
+map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
+map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>')
+map('n', '<leader>fp', '<cmd>lua require(\'telescope.builtin\').git_files()<CR>')
+
+-- BUFFERS
+map('n', '<leader>bn', '<cmd>bnext<CR>')
+map('n', '<leader>bp', '<cmd>bprev<CR>')
+map('n', '<leader>bw', '<cmd>bd!<CR>')
+map('n', '<leader>bq', '<cmd>%bd!|e#|bd#<CR>')
+
+-- WINDOWS
+map('n', '<C-w>w', '<cmd>bd!<CR>')
 map('n', '<leader>hs', '<C-W>s<C-W>j<CR>')
 map('n', '<leader>vs', '<C-W>v<C-W>l<CR>')
-map('n', '<leader>5', '<cmd>luafile %<CR>')
-map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>')
+
+-- TERMINAL
+map('n', '<leader>ht', '<cmd>:split +terminal<CR>i')
+map('n', '<leader>vt', '<cmd>:vsplit +terminal<CR>i')
 -- map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
 
 -- AUTOPAIRS
@@ -144,6 +163,9 @@ require('lualine').setup {
 -- INDENTLINE
 g['indentLine_fileTypeExclude'] = {'help', 'packer'}
 g['indentLine_bufTypeExclude'] = {'terminal'}
+
+-- GITSIGNS
+require('gitsigns').setup()
 
 -- LSP
 local function setup_servers()
