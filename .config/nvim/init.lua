@@ -83,15 +83,15 @@ cmd 'autocmd TermOpen * setlocal signcolumn=no' -- Same here?
 -- MAPPINGS
 map('', '<leader>y', '"+y')
 map('i', 'jj', '<Esc>');
+map('c', 'jj', '<C-c>');
 map('n', '<C-l>', '<cmd>noh<CR>')
 map('t', '<Esc>', '<C-\\><C-N>0')
 map('n', '<leader>5', '<cmd>luafile %<CR>')
 
 -- TELESCOPE
-map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>')
+map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true, files = true })<CR>')
 map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
 map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>')
-map('n', '<leader>fp', '<cmd>lua require(\'telescope.builtin\').git_files()<CR>')
 
 -- BUFFERS
 map('n', '<leader>bn', '<cmd>bnext<CR>')
@@ -207,4 +207,11 @@ require'compe'.setup {
     nvim_lua = true;
     vsnip = true;
   };
+}
+
+-- TELESCOPE
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = { "node_modules", ".git/*" }
+  }
 }
