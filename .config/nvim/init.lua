@@ -40,6 +40,7 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
   use 'hrsh7th/nvim-compe'
+  use 'mattn/emmet-vim'
 end)
 
 -- COLORSCHEME
@@ -89,7 +90,7 @@ map('t', '<Esc>', '<C-\\><C-N>0')
 map('n', '<leader>5', '<cmd>luafile %<CR>')
 
 -- TELESCOPE
-map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({ hidden = true, files = true })<CR>')
+map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({ follow = true, hidden = true, files = true })<CR>')
 map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
 map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>')
 
@@ -137,7 +138,7 @@ require('nvim-treesitter.configs').setup {
 -- LUALINE
 require('lualine').setup {
   options = {
-    section_separators = {'🮧', '🮧'},
+    section_separators = {'', ''},
     component_separators = {'۰', '۰'},
     theme = 'tokyonight',
     icons_enabled=false
@@ -215,3 +216,10 @@ require('telescope').setup {
     file_ignore_patterns = { "node_modules", ".git/*" }
   }
 }
+
+-- EMMET
+-- How to do this through Lua?
+-- cmd 'let g:user_emmet_mode=\'inv\''
+-- cmd 'let g:user_emmet_install_global = 0'
+-- cmd 'autocmd FileType html,css,typescriptreact EmmetInstall'
+-- g['user_emmet_leader_key'] = '<C-e>'
