@@ -1,0 +1,55 @@
+-- neovim api aliases
+local cmd = vim.cmd
+local exec = vim.api.nvim_exec
+local fn = vim.fn
+local g = vim.g
+local opt = vim.opt
+
+-- general
+g.mapleader = ' '
+opt.clipboard = 'unnamedplus'
+opt.swapfile = false
+
+-- ui
+opt.number = true
+opt.relativenumber = true
+opt.showmatch = true
+opt.foldmethod = 'marker'
+opt.splitright = true
+opt.splitbelow = true
+opt.signcolumn = 'yes'
+opt.listchars = 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»'
+
+-- memory, cpu
+opt.hidden = true
+opt.history = 100
+-- opt.lazydraw = true
+opt.synmaxcol = 256
+
+-- colorscheme
+opt.termguicolors = true
+require('github-theme').setup({
+    theme_style = 'dimmed',
+    sidebars = { 'packer' },
+})
+
+-- tabs, indent
+local indent = 2
+opt.expandtab = true
+opt.shiftwidth = indent
+opt.tabstop = indent
+opt.smartindent = true
+ -- stop auto comment on new lines
+cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+
+-- autocompletion
+opt.completeopt = 'menu,menuone,noselect'
+
+-- terminal
+-- enter insert mode when focusing terminal
+-- close terminal buffer on process exit
+cmd [[
+    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+    autocmd TermOpen * startinsert
+    autocmd BufLeave term://* stopinsert
+]]
