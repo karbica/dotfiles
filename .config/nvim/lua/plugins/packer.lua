@@ -8,15 +8,15 @@ return packer.startup(function()
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- a customizable status line
-    use 'feline-nvim/feline.nvim'
-
     -- file explorer
     use 'kyazdani42/nvim-tree.lua'
 
-    -- auto indent line
-    use 'lukas-reineke/indent-blankline.nvim'
-
+    -- a customizable status line
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+    
     -- convenient pairing for characters
     use 'windwp/nvim-autopairs'
 
@@ -25,6 +25,12 @@ return packer.startup(function()
 
     -- colorschemes
     use "projekt0n/github-nvim-theme"
+    --[[ use {
+     "projekt0n/github-nvim-theme",
+     config = function()
+       require('github-theme').setup()
+     end
+    } ]]
 
     -- LSP
     use 'neovim/nvim-lspconfig'

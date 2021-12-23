@@ -18,19 +18,23 @@ opt.foldmethod = 'marker'
 opt.splitright = true
 opt.splitbelow = true
 opt.signcolumn = 'yes'
+opt.wildmenu = true
+opt.wildmode = 'list:full,full'
+opt.cmdheight = 2
+opt.smartcase = true
+opt.ignorecase = true
 opt.listchars = 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»'
 
 -- memory, cpu
 opt.hidden = true
 opt.history = 100
--- opt.lazydraw = true
+opt.lazyredraw = true
 opt.synmaxcol = 256
 
 -- colorscheme
 opt.termguicolors = true
 require('github-theme').setup({
     theme_style = 'dimmed',
-    sidebars = { 'packer' },
 })
 
 -- tabs, indent

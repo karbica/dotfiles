@@ -28,9 +28,11 @@ map('', '<right>', '<noop>', { noremap = true })
 
 -- faster saving
 map('n', '<leader>w', ':w<CR>', default_opts)
-map('i', '<leader>w', '<C-c>:w<CR>', default_opts)
 
--- move around splits
+-- splits
+map('n', '<C-w>w', '<cmd>bd!<CR>', default_opts)
+map('n', '<leader>hs', '<C-W>s<C-W>j<CR>', default_opts)
+map('n', '<leader>vs', '<C-W>v<C-W>l<CR>', default_opts)
 map('n', '<C-h>', '<C-w>h', default_opts)
 map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)
