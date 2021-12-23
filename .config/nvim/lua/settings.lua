@@ -25,6 +25,7 @@ opt.smartcase = true
 opt.ignorecase = true
 opt.showmode = false
 opt.listchars = 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»'
+-- hide the vertical line character
 cmd [[ set fillchars+=vert:\ ]]
 
 -- memory, cpu
