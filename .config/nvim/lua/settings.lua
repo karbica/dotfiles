@@ -23,7 +23,9 @@ opt.wildmode = 'list:full,full'
 opt.cmdheight = 2
 opt.smartcase = true
 opt.ignorecase = true
+opt.showmode = false
 opt.listchars = 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»'
+cmd [[ set fillchars+=vert:\ ]]
 
 -- memory, cpu
 opt.hidden = true

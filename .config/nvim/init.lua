@@ -2,8 +2,13 @@
 require('settings')
 require('keymaps')
 require('plugins/packer')
+require('plugins/nvim-treesitter')
+require('plugins/telescope')
+require('plugins/circles')
+require('plugins/lualine')
+require('plugins/gitsigns')
 
-
+-- require('plugins/nvim-tree')
 
 -- -- HELPERS
 -- local g = vim.g
