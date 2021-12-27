@@ -1,32 +1,33 @@
--- https://github.com/wbthomason/packer.nvim
-
 vim.cmd [[packadd packer.nvim]]
 local packer = require('packer')
 
 return packer.startup(function()
 
-  -- packer can manage itself
+  -- https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
 
-  -- file explorer
+  -- https://github.com/kyazdani42/nvim-tree.lua
   use 'kyazdani42/nvim-tree.lua'
 
-  -- a customizable status line
+  -- https://github.com/nvim-lualine/lualine.nvim
   use 'nvim-lualine/lualine.nvim'
 
-  -- faster cursor movement
+  -- https://github.com/ggandor/lightspeed.nvim
   use 'ggandor/lightspeed.nvim'
 
-  -- convenient pairing for characters
+  -- https://github.com/lukas-reineke/indent-blankline.nvim
+  use "lukas-reineke/indent-blankline.nvim"
+
+  -- https://github.com/windwp/nvim-autopairs
   use 'windwp/nvim-autopairs'
 
-  -- rich language features
+  -- https://github.com/nvim-treesitter/nvim-treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
 
-  -- minimal icons
+  -- https://github.com/projekt0n/circles.nvim
   use {
     'projekt0n/circles.nvim',
     requires = {
@@ -35,22 +36,22 @@ return packer.startup(function()
     },
   }
 
-  -- colorschemes
+  -- https://github.com/projekt0n/github-nvim-theme
   use 'projekt0n/github-nvim-theme'
 
-  -- LSP
+  -- https://github.com/neovim/nvim-lspconfig
   use 'neovim/nvim-lspconfig'
 
-  -- commenting utility
+  -- https://github.com/b3nj5m1n/kommentary
   use 'b3nj5m1n/kommentary'
 
-  -- customizable project search
+  -- https://github.com/nvim-telescope/telescope.nvim
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
   }
 
-  -- git label indicators in the column
+  -- https://github.com/lewis6991/gitsigns.nvim
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },

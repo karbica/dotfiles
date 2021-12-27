@@ -24,7 +24,15 @@ opt.cmdheight = 2
 opt.smartcase = true
 opt.ignorecase = true
 opt.showmode = false
-opt.listchars = 'tab:⨼ ,nbsp:␣,trail:‧,eol:↯,precedes:«,extends:»'
+opt.list = true
+opt.listchars = {
+  tab = '⨼ ',
+  nbsp = '␣',
+  trail = '‧',
+  eol = '↯',
+  precedes = '«',
+  extends = '»',
+}
 -- hide the vertical line character
 cmd [[ set fillchars+=vert:\ ]]
 
@@ -37,7 +45,7 @@ opt.synmaxcol = 256
 -- colorscheme
 opt.termguicolors = true
 require('github-theme').setup({
-    theme_style = 'dimmed',
+  theme_style = 'dimmed',
 })
 
 -- tabs, indent
@@ -56,7 +64,7 @@ opt.completeopt = 'menu,menuone,noselect'
 -- enter insert mode when focusing terminal
 -- close terminal buffer on process exit
 cmd [[
-    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
-    autocmd TermOpen * startinsert
-    autocmd BufLeave term://* stopinsert
+  autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+  autocmd TermOpen * startinsert
+  autocmd BufLeave term://* stopinsert
 ]]
