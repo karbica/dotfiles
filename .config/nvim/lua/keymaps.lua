@@ -42,7 +42,8 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 map('n', '<leader>q', ':qa!<CR>', default_opts)
 
 -- open terminal
-map('n', '<C-t>', ':Term<CR>', { noremap = true })
+map('n', '<leader>ht', '<cmd>:split +terminal<CR>', default_opts)
+map('n', '<leader>vt', '<cmd>:vsplit +terminal<CR>', default_opts)
 
 -- telescope
 map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({ follow = true, hidden = true, files = true })<CR>', default_opts)

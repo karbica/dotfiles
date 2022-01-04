@@ -2,7 +2,6 @@
 require('settings')
 require('keymaps')
 require('colorscheme')
-vim.cmd [[highlight NonText guifg=#494f56]]
 require('plugins/packer')
 require('plugins/nvim-treesitter')
 require('plugins/telescope')

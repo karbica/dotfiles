@@ -21,9 +21,12 @@ return packer.startup(function()
   -- https://github.com/windwp/nvim-autopairs
   use 'windwp/nvim-autopairs'
 
+  -- https://github.com/gelguy/wilder.nvim
+  use 'gelguy/wilder.nvim'
+
   -- https://github.com/nvim-treesitter/nvim-treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     run = ":TSUpdate",
   }
 
@@ -31,8 +34,8 @@ return packer.startup(function()
   use {
     'projekt0n/circles.nvim',
     requires = {
-      {'kyazdani42/nvim-web-devicons'},
-      {'kyazdani42/nvim-tree.lua', opt = true},
+      { 'kyazdani42/nvim-web-devicons' },
+      { 'kyazdani42/nvim-tree.lua', opt = true },
     },
   }
 

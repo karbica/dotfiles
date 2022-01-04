@@ -34,7 +34,7 @@ opt.listchars = {
   extends = '»',
 }
 -- hide the vertical line character
-cmd [[ set fillchars+=vert:\ ]]
+-- cmd [[ set fillchars+=vert:\ ]]
 
 -- memory, cpu
 opt.hidden = true
