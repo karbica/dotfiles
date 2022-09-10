@@ -1,3 +1,10 @@
+# Zsh loads these files in the following order:
+# .zshenv - Contains the user's environment variables.
+# .zprofile - Executes commands just before logging in.
+# .zshrc - Used for shell configuration and also executes commands.
+# .zlogin - Same as `.zprofile` but read after `.zshrc`.
+# .zlogout - Executes commands when the shell exits.
+
 # reset
 unalias -m "*"
 
@@ -37,15 +44,15 @@ prompt pure
 # hush rm glob warnings
 setopt rmstarsilent
 
-# hooks
+# zsh hooks
 function set-title-precmd() {
   # printf "\e]2;%s\a" "${PWD/#$HOME/~}"
-  kitty @ set-tab-title $(print -Pn '%(4~|…/%2~|%3~)')
+  # kitty @ set-tab-title $(print -Pn '%(4~|…/%2~|%3~)')
 }
 
 function set-title-preexec() {
   # printf "\e]2;%s\a" "$1"
-  kitty @ set-tab-title $(print -Pn "$1")
+  # kitty @ set-tab-title $(print -Pn "$1")
 }
 
 if [[ $KITTY_ENV -eq "1" ]]; then
@@ -53,12 +60,6 @@ if [[ $KITTY_ENV -eq "1" ]]; then
   # add-zsh-hook precmd set-title-precmd
   # add-zsh-hook preexec set-title-preexec
 fi
-
-# blocksize
-export BLOCKSIZE=1k
-
-# man pager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # fs
 alias l="\ls -G"
@@ -76,7 +77,6 @@ alias du='\du -h'
 # grep
 alias g="\grep -n"
 alias grep="\grep -n"
-export GREP_OPTIONS="--color=auto"
 
 # network
 alias myip="\curl -4 ifconfig.co/json"
@@ -110,26 +110,3 @@ function wttr {
 function fh {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
-
-# node
-# https://nodejs.org/api/cli.html
-export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/crowdstrike-ROOT-CA.pem
-
-# go
-# https://golang.org/
-export GOPATH="$HOME/dev/.go"
-export GO111MODULE="auto"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-
-# volta
-# https://volta.sh/
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# rust
-# https://rust-lang.org
-if [[ -d "$HOME/.cargo" ]]; then
-	source "$HOME/.cargo/env"
-else
-	true
-fi
