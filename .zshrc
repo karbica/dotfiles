@@ -23,13 +23,36 @@ fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
 # 	compaudit | xargs chmod g-w
 #
 # This should take care of the warning every time a new ZSH shell is started.
+
+# git completions
 zstyle ':completion:*:*:git:*' script ~/.local/share/zsh/git-completion.bash
 autoload -Uz compinit && compinit
 
 # prompt
 # https://github.com/sindresorhus/pure
 autoload -Uz promptinit && promptinit
+zstyle :prompt:pure:git:stash show yes
 prompt pure
+
+# hush rm glob warnings
+setopt rmstarsilent
+
+# hooks
+function set-title-precmd() {
+  # printf "\e]2;%s\a" "${PWD/#$HOME/~}"
+  kitty @ set-tab-title $(print -Pn '%(4~|…/%2~|%3~)')
+}
+
+function set-title-preexec() {
+  # printf "\e]2;%s\a" "$1"
+  kitty @ set-tab-title $(print -Pn "$1")
+}
+
+if [[ $KITTY_ENV -eq "1" ]]; then
+  # autoload -Uz add-zsh-hook
+  # add-zsh-hook precmd set-title-precmd
+  # add-zsh-hook preexec set-title-preexec
+fi
 
 # blocksize
 export BLOCKSIZE=1k
@@ -68,20 +91,30 @@ alias tmux="\tmux -2"
 alias tm="\tmux -2"
 alias nv="nvim"
 
-# show pids by port
+# Show the PID of a program based on the listening port.
 function lsport {
   lsof -i:"$1"
 }
 
-# tldr
+# Get the gist of some CLI command.
 function tldr {
   curl cheat.sh/"$1"
 }
 
-# wttr
+# Check the weather through the terminal.
 function wttr {
   curl wttr.in/"$1"
 }
+
+# Invoke a shell command based on a search using fzf.
+function fh {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+# node
+# https://nodejs.org/api/cli.html
+export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/crowdstrike-ROOT-CA.pem
+
 # go
 # https://golang.org/
 export GOPATH="$HOME/dev/.go"
@@ -100,25 +133,3 @@ if [[ -d "$HOME/.cargo" ]]; then
 else
 	true
 fi
-
-# TODO Delete after Neovim 0.5.0 release.
-function nvim-nightly() {
-  pushd ~/.local > /dev/null
-  echo "Changing current directory to: $(pwd)"
-  echo "Fetching nightly Neovim binary... "
-  curl -sLO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-  if [[ $? -ne 0 ]]
-  then
-    echo "Fetching the binary failed, check what happened to release files. (https://github.com/neovim/neovim/releases)"
-    popd > /dev/null
-    echo "Changing current directory back to: $(pwd)"
-    return 1
-  fi
-  echo "Extracting archive file..."
-  tar xzvf nvim-macos.tar.gz
-  echo "Removing archive file..."
-  rm nvim-macos.tar.gz
-  echo "Done!"
-  popd > /dev/null
-}
-export PATH="$HOME/.local/nvim-osx64/bin:$PATH"

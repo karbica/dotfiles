@@ -1,7 +1,8 @@
 require('github-theme').setup({
-  dark_sidebar = false
+  theme_style = 'dark_default'
 })
 
-vim.cmd [[highlight StatusLineNC guibg=#1D2127]]
-vim.cmd [[highlight VertSplit guifg=#1D2127]]
-vim.cmd [[highlight NonText guifg=#494F56]]
+vim.cmd [[highlight VertSplit guifg=#000000]]
+vim.cmd [[highlight NonText guifg=#282b31]]
+vim.cmd [[highlight StatusLineNC guifg=#090C10 guibg=#090C10]]
+

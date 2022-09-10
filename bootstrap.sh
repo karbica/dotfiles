@@ -1,4 +1,4 @@
-##!/usr/bin/env bash
+#!/usr/bin/env bash
 
 #dir=~/.dotfiles
 #[ ! -d $dir ] && mkdir -pv $dir
@@ -9,10 +9,10 @@
 #done
 
 os=$(uname)
-programs="htop bat rg fzf jq nvim volta deno go alacritty"
+programs="htop bat rg fzf jq nvim volta deno go kitty"
 
 function check() {
-    for p in $programs
+  for p in $programs
     do
       which $p > /dev/null
       if [ $? -eq 0 ]
@@ -21,7 +21,7 @@ function check() {
       else
         echo has not $p
       fi
-    done
+  done
 }
 
 function usage() {

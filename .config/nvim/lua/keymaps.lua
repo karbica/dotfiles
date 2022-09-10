@@ -31,8 +31,8 @@ map('n', '<leader>w', ':w<CR>', default_opts)
 
 -- splits
 map('n', '<C-w>w', '<cmd>bd!<CR>', default_opts)
-map('n', '<leader>hw', '<C-w>S<C-w>j<CR>', default_opts)
-map('n', '<leader>vw', '<C-w>v<C-w>l<CR>', default_opts)
+map('n', '<leader>hs', '<C-w>S<C-w>j<CR>', default_opts)
+map('n', '<leader>vs', '<C-w>v<C-w>l<CR>', default_opts)
 map('n', '<C-h>', '<C-w>h', default_opts)
 map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)

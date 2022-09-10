@@ -19,7 +19,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.signcolumn = 'yes'
 opt.wildmenu = true
-opt.wildmode = 'list:full,full'
+-- opt.wildmode = 'list:full,full'
 opt.cmdheight = 2
 opt.smartcase = true
 opt.ignorecase = true
@@ -44,9 +44,6 @@ opt.synmaxcol = 256
 
 -- colorscheme
 opt.termguicolors = true
-require('github-theme').setup({
-  theme_style = 'dimmed',
-})
 
 -- tabs, indent
 local indent = 2
@@ -68,3 +65,4 @@ cmd [[
   autocmd TermOpen * startinsert
   autocmd BufLeave term://* stopinsert
 ]]
+
