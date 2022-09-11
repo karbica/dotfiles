@@ -20,7 +20,9 @@
 	undo = reset HEAD~1 --mixed
 	unstage = reset HEAD --
 	amend = commit -a --amend
-	lg = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[commit]
+  template = ~/.gitmessage
 [pull]
 	rebase = true
 [diff]
