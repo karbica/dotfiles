@@ -5,6 +5,7 @@
 	filemode = true
 	ignorecase = true
 	editor = nvim
+	pager = less -F -X
 [color]
 	ui = true
 [alias]
