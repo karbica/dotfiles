@@ -1,5 +1,5 @@
 # Set the theme to `base16`.
---theme="base16"
+--theme="base16-256"
 
 # Map `.mjs` to JavaScript syntax.
 --map-syntax "mjs:js"
