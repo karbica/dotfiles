@@ -1,4 +1,4 @@
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+vim.g.indent_blankline_filetype_exclude = { 'help', 'packer', 'man' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal' }
 vim.g.indentLine_indentLevel = true
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#282b31 gui=nocombine]]
