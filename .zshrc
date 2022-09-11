@@ -30,8 +30,6 @@ fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
 # 	compaudit | xargs chmod g-w
 #
 # This should take care of the warning every time a new ZSH shell is started.
-
-# git completions
 zstyle ':completion:*:*:git:*' script ~/.local/share/zsh/git-completion.bash
 autoload -Uz compinit && compinit
 
@@ -41,27 +39,47 @@ autoload -Uz promptinit && promptinit
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-# hush rm glob warnings
-setopt rmstarsilent
+# parameters
+# https://zsh.sourceforge.io/Doc/Release/Parameters.html
+HISTFILE="$XDG_CONFIG_HOME/zsh/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
 
-# zsh hooks
-function set-title-precmd() {
-  # printf "\e]2;%s\a" "${PWD/#$HOME/~}"
-  # kitty @ set-tab-title $(print -Pn '%(4~|…/%2~|%3~)')
-}
+# options
+# https://zsh.sourceforge.io/Doc/Release/Options.html
+setopt EXTENDED_GLOB
+setopt RM_STAR_SILENT
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
 
-function set-title-preexec() {
-  # printf "\e]2;%s\a" "$1"
-  # kitty @ set-tab-title $(print -Pn "$1")
-}
+# base directory specification
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_CONFIG_HOME XDG_STATE_HOME
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
 
-if [[ $KITTY_ENV -eq "1" ]]; then
-  # autoload -Uz add-zsh-hook
-  # add-zsh-hook precmd set-title-precmd
-  # add-zsh-hook preexec set-title-preexec
-fi
+# editors
+export EDITOR="nvim"
+export VISUAL="nvim"
 
-# fs
+# gnu
+# https://www.gnu.org/software/coreutils/manual/html_node/Block-size.html
+export BLOCKSIZE=1k
+
+# man pages
+export MANPAGER="nvim +Man!"
+
+# file system
 alias l="\ls -G"
 alias ls="\ls -G"
 alias l="\ls -Gl"
@@ -73,6 +91,15 @@ alias ....="\cd ../../.."
 alias .....="\cd ../../../.."
 alias df='\df -hT'
 alias du='\du -h'
+
+# zsh directory stack
+# https://thevaluable.dev/zsh-install-configure-mouseless/#zsh-directory-stack
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+# vi mode
+# bindkey -v
+# export KEYTIMEOUT=1
 
 # grep
 alias g="\grep -n"
@@ -87,26 +114,36 @@ alias ssh="\ssh -v"
 
 # terminal
 alias c="\clear"
-alias tmux="\tmux -2"
-alias tm="\tmux -2"
-alias nv="nvim"
 
-# Show the PID of a program based on the listening port.
-function lsport {
-  lsof -i:"$1"
-}
+# go
+# https://golang.org/
+export GOPATH="$HOME/dev/.go"
+export GO111MODULE="auto"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
-# Get the gist of some CLI command.
-function tldr {
-  curl cheat.sh/"$1"
-}
+# volta
+# https://volta.sh/
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
-# Check the weather through the terminal.
-function wttr {
-  curl wttr.in/"$1"
-}
+# rust
+# https://doc.rust-lang.org/cargo/reference/environment-variables.html
+if [[ -d "$HOME/.cargo" ]]; then
+	source "$HOME/.cargo/env"
+else
+	true
+fi
 
-# Invoke a shell command based on a search using fzf.
-function fh {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
+# scripts file for custom functions
+if [[ -f "$ZDOTDIR/scripts.zsh" ]]; then
+  source "$ZDOTDIR/scripts.zsh" 
+else
+  true
+fi
+
+# local env vars file (not tracked in git)
+if [[ -f "$ZDOTDIR/local.zsh" ]]; then
+  source "$ZDOTDIR/local.zsh" 
+else
+  true
+fi

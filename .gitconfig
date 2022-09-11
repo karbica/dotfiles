@@ -1,8 +1,5 @@
 [gpg]
 	program = gpg
-[user]
-	name = Kevin Arbi
-	email = karbica@eml.cc
 [core]
 	pretty = oneline
 	filemode = true
@@ -23,3 +20,19 @@
 	unstage = reset HEAD --
 	amend = commit -a --amend
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[pull]
+	rebase = true
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[init]
+  defaultBranch = main
+[push]
+	autoSetupRemote = true
+[include]
+	path = ~/.gitconfig.local
