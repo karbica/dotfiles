@@ -77,7 +77,7 @@ export VISUAL="nvim"
 export BLOCKSIZE=1k
 
 # man pages
-export MANPAGER="nvim +Man!"
+# export PAGER="nvim +Man!"
 
 # file system
 alias l="\ls -G"
