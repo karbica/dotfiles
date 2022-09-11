@@ -3,7 +3,7 @@
 [core]
 	pretty = oneline
 	filemode = true
-  ignorecase = true
+	ignorecase = true
 	editor = nvim
 [color]
 	ui = true
