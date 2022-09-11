@@ -107,9 +107,6 @@ alias grep="\grep -n"
 
 # network
 alias myip="\curl -4 ifconfig.co/json"
-alias p="\ping"
-alias n="\nslookup"
-alias d="\dig"
 alias ssh="\ssh -v"
 
 # terminal
