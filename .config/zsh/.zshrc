@@ -67,6 +67,7 @@ setopt HIST_VERIFY
 export XDG_CONFIG_HOME XDG_STATE_HOME
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
+export XDG_STATE_HOME=~/.local/state
 
 # editors
 export EDITOR="nvim"
@@ -75,9 +76,6 @@ export VISUAL="nvim"
 # gnu
 # https://www.gnu.org/software/coreutils/manual/html_node/Block-size.html
 export BLOCKSIZE=1k
-
-# man pages
-# export PAGER="nvim +Man!"
 
 # file system
 alias l="\ls -G"
