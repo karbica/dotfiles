@@ -137,8 +137,8 @@ else
 fi
 
 # local env vars file (not tracked in git)
-if [[ -f "$ZDOTDIR/local.zsh" ]]; then
-  source "$ZDOTDIR/local.zsh" 
+if [[ -f "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local" 
 else
   true
 fi
