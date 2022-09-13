@@ -49,7 +49,6 @@ fpath=(~/.zsh "$XDG_DATA_HOME/zsh/pure" $fpath)
 zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.bash
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
-
 # ╭────────╮
 # │ PROMPT │
 # ╰────────╯
