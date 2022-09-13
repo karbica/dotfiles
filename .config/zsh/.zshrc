@@ -5,13 +5,27 @@
 # .zlogin - Same as `.zprofile` but read after `.zshrc`.
 # .zlogout - Executes commands when the shell exits.
 
+# ╭─────╮
+# │ XDG │
+# ╰─────╯
+
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_CONFIG_HOME XDG_STATE_HOME
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_STATE_HOME=~/.local/state
+
 # reset
 unalias -m "*"
 
 # function paths
-fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
+fpath=(~/.zsh "$XDG_DATA_HOME/zsh/pure" $fpath)
 
-# git completions
+# ╭─────────────╮
+# │ COMPLETIONS │
+# ╰─────────────╯
+
 # https://github.com/git/git/tree/master/contrib/completion
 #
 # If you run into ZSH complaining about insecure directories it will be
@@ -30,22 +44,34 @@ fpath=(~/.zsh "$HOME/.local/share/zsh/pure" $fpath)
 # 	compaudit | xargs chmod g-w
 #
 # This should take care of the warning every time a new ZSH shell is started.
-zstyle ':completion:*:*:git:*' script ~/.local/share/zsh/git-completion.bash
-autoload -Uz compinit && compinit
 
-# prompt
+# https://stackoverflow.com/a/26479426
+zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.bash
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+
+
+# ╭────────╮
+# │ PROMPT │
+# ╰────────╯
+
 # https://github.com/sindresorhus/pure
 autoload -Uz promptinit && promptinit
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-# parameters
-# https://zsh.sourceforge.io/Doc/Release/Parameters.html
-HISTFILE="$XDG_CONFIG_HOME/zsh/.zhistory"
-HISTSIZE=10000
-SAVEHIST=10000
+# ╭────────────╮
+# │ PARAMETERS │
+# ╰────────────╯
 
-# options
+# https://zsh.sourceforge.io/Doc/Release/Parameters.html
+HISTFILE="$XDG_STATE_HOME/zsh/.zhistory"
+HISTSIZE=100000
+SAVEHIST=100000
+
+# ╭─────────╮
+# │ OPTIONS │
+# ╰─────────╯
+
 # https://zsh.sourceforge.io/Doc/Release/Options.html
 setopt EXTENDED_GLOB
 setopt RM_STAR_SILENT
@@ -61,14 +87,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 
-# base directory specification
-# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-# https://wiki.archlinux.org/title/XDG_Base_Directory
-export XDG_CONFIG_HOME XDG_STATE_HOME
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_STATE_HOME=~/.local/state
-
 # editors
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -76,6 +94,10 @@ export VISUAL="nvim"
 # gnu
 # https://www.gnu.org/software/coreutils/manual/html_node/Block-size.html
 export BLOCKSIZE=1k
+
+# ╭─────────╮
+# │ ALIASES │
+# ╰─────────╯
 
 # file system
 alias l="\ls -G"
@@ -110,18 +132,19 @@ alias ssh="\ssh -v"
 # terminal
 alias c="\clear"
 
-# go
+# ╭──────────────╮
+# │ TOOLS & LANG │
+# ╰──────────────╯
+
 # https://golang.org/
 export GOPATH="$HOME/dev/.go"
 export GO111MODULE="auto"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
-# volta
 # https://volta.sh/
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# rust
 # https://doc.rust-lang.org/cargo/reference/environment-variables.html
 if [[ -d "$HOME/.cargo" ]]; then
 	source "$HOME/.cargo/env"
@@ -129,12 +152,33 @@ else
 	true
 fi
 
-# scripts file for custom functions
-if [[ -f "$ZDOTDIR/scripts.zsh" ]]; then
-  source "$ZDOTDIR/scripts.zsh" 
-else
-  true
-fi
+# ╭─────────────────────╮
+# │ FUNCTIONS & SCRIPTS │
+# ╰─────────────────────╯
+
+# show process id by listening port
+function lsport {
+  lsof -i:"$1"
+}
+
+# get cheat sheet of some command
+function tldr {
+  curl cheat.sh/"$1"
+}
+
+# get weather forecast
+function wttr {
+  curl wttr.in/"$1"
+}
+
+# search and invoke command from history through fzf
+function fh {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+# ╭──────────────╮
+# │ LOCAL SOURCE │
+# ╰──────────────╯
 
 # local env vars file (not tracked in git)
 if [[ -f "$HOME/.zshrc.local" ]]; then

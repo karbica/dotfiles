@@ -12,6 +12,7 @@
 	ci = commit
 	co = checkout
 	cob = checkout -b
+	fco = !git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)
 	st = status
 	br = branch
 	brd = branch -d
