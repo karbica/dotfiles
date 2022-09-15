@@ -120,10 +120,6 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # bindkey -v
 # export KEYTIMEOUT=1
 
-# grep
-alias g="\grep -n"
-alias grep="\grep -n"
-
 # network
 alias myip="\curl -4 ifconfig.co/json"
 alias ssh="\ssh -v"
