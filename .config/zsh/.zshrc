@@ -16,6 +16,10 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export XDG_STATE_HOME=~/.local/state
 
+# ╭─────────╮
+# │ GLOBALS │
+# ╰─────────╯
+
 # reset
 unalias -m "*"
 
