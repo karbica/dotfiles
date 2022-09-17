@@ -121,8 +121,8 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
+bindkey -v
+export KEYTIMEOUT=1
 
 # network
 alias myip="\curl -4 ifconfig.co/json"
