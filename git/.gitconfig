@@ -22,10 +22,13 @@
 	unstage = reset HEAD --
 	amend = commit -a --amend
 	lg = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[status]
+  submoduleSummary = true
 [pull]
 	rebase = true
 [diff]
   tool = vscode
+  submodule = log
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [merge]

@@ -30,6 +30,50 @@ fpath=(~/.zsh "$XDG_DATA_HOME/zsh/pure" $fpath)
 # │ COMPLETIONS │
 # ╰─────────────╯
 
+# zstyle pattern
+# :completion:<function>:<completer>:<command>:<argument>:<tag>
+
+# called before compinit
+zmodload zsh/complist
+
+# register homebrew completions
+if type brew &>/dev/null
+then
+  fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
+fi
+
+# load functions and use the cache directory
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+
+# basic completers
+zstyle ':completion:*' completer _extensions _complete _approximate
+
+# turn to cache for commands that use it
+zstyle ':completion:*' use-cache on
+zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+
+# autocomplete options for `cd` instead of directory stack
+zstyle ':completion:*' complete-options true
+
+# sorty by modification date
+zstyle ':completion:*' file-sort modification
+
+# format completion tags
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{blue}-- %D %d --%f'
+zstyle ':completion:*:*:*:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
+
+# only display some tags for `cd`
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+
+# ordering of groups
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
+
+# keep the prefix when activating autocomplete
+zstyle ':completion:*' keep-prefix true
+
 # https://github.com/git/git/tree/master/contrib/completion
 #
 # If you run into ZSH complaining about insecure directories it will be
@@ -50,8 +94,7 @@ fpath=(~/.zsh "$XDG_DATA_HOME/zsh/pure" $fpath)
 # This should take care of the warning every time a new ZSH shell is started.
 
 # https://stackoverflow.com/a/26479426
-zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.bash
-autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.zsh
 
 # ╭────────╮
 # │ PROMPT │
@@ -59,7 +102,7 @@ autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # https://github.com/sindresorhus/pure
 autoload -Uz promptinit && promptinit
-zstyle :prompt:pure:git:stash show yes
+zstyle ':prompt:pure:git:stash' show yes
 prompt pure
 
 # ╭────────────╮
