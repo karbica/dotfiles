@@ -23,15 +23,15 @@ export XDG_STATE_HOME=~/.local/state
 # reset
 unalias -m "*"
 
-# function paths
-fpath=(~/.zsh "$XDG_DATA_HOME/zsh/pure" $fpath)
-
 # ╭─────────────╮
 # │ COMPLETIONS │
 # ╰─────────────╯
 
 # zstyle pattern
 # :completion:<function>:<completer>:<command>:<argument>:<tag>
+
+# load more completions
+fpath=($XDG_DATA_HOME/zsh/zsh-completions $fpath)
 
 # called before compinit
 zmodload zsh/complist
@@ -94,16 +94,19 @@ zstyle ':completion:*' keep-prefix true
 # This should take care of the warning every time a new ZSH shell is started.
 
 # https://stackoverflow.com/a/26479426
-zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.zsh
+# fpath=($XDG_DATA_HOME/zsh $fpath)
+# zstyle ':completion:*:*:git:*' script $XDG_DATA_HOME/zsh/git-completion.zsh
 
 # ╭────────╮
 # │ PROMPT │
 # ╰────────╯
 
-# https://github.com/sindresorhus/pure
-autoload -Uz promptinit && promptinit
-zstyle ':prompt:pure:git:stash' show yes
-prompt pure
+# https://github.com/starship/starship
+if type starship &> /dev/null 
+then
+  export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+  eval "$(starship init zsh)"
+fi
 
 # ╭────────────╮
 # │ PARAMETERS │
@@ -164,8 +167,9 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# bindkey -v
+# export KEYTIMEOUT=1
+source $XDG_DATA_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # network
 alias myip="\curl -4 ifconfig.co/json"
@@ -211,6 +215,10 @@ function tldr {
 # get weather forecast
 function wttr {
   curl wttr.in/"$1"
+}
+
+function rebuildzcd {
+  rm -f $XDG_DATA_HOME/zsh/.zcompdump && compinit
 }
 
 # search and invoke command from history through fzf
