@@ -41,6 +41,7 @@ modified = "​"
 staged = "​"
 renamed = "​"
 deleted = "​"
+diverged = "⇡⇣"
 stashed = "≡"
 
 [cmd_duration]
