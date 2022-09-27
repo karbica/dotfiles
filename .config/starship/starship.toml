@@ -20,6 +20,7 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 truncate_to_repo = false
 style = "blue"
 read_only = " ᛜ"
+truncation_symbol = "…/"
 
 [git_branch]
 style = "purple"
