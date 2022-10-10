@@ -9,6 +9,7 @@
 [color]
 	ui = true
 [alias]
+  fp = !git fetch -p
 	ci = commit
 	co = checkout
 	cob = checkout -b
