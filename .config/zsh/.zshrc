@@ -170,7 +170,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 source $XDG_DATA_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+ZVM_VI_ESCAPE_BINDKEY=jj
 
 # network
 alias myip="\curl -4 ifconfig.co/json"
