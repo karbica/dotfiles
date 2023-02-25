@@ -10,19 +10,30 @@
 	ui = true
 [alias]
   fp = !git fetch -p
-	ci = commit
-	co = checkout
-	cob = checkout -b
-	fco = !git checkout $(git for-each-ref refs/remotes/ --format='%(refname:lstrip=3)' | grep -v '^HEAD' | fzf)
-	st = status
-	br = branch
-	brd = branch -d
-	brD = branch -D
+	ci = !git commit
+	co = !git checkout
+	cob = !git checkout -b
+  fco = !git checkout \
+    $(git for-each-ref refs/ \
+    --format='%(refname:lstrip=2)' \
+    | grep -vE 'origin/HEAD' \
+    | sed -r \"s/origin\\///\" \
+    | sort -u \
+    | fzf \
+  )
+	st = !git status
+	br = !git branch
+	brd = !git branch -d
+	brD = !git branch -D
 	cm = !git add -A && git commit -m
-	undo = reset HEAD~1 --mixed
-	unstage = reset HEAD --
-	amend = commit -a --amend
-	lg = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	undo = !git reset HEAD~1 --mixed
+	unstage = !git reset HEAD --
+	amend = !git commit -a --amend
+	lg = !git log \
+		--all \
+		--graph \
+		--pretty=format:'%C(magenta)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' \
+		--abbrev-commit
 [status]
   submoduleSummary = true
 [pull]
