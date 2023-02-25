@@ -28,7 +28,7 @@ symbol = "ᛝ "
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
-style = "218"
+# style = "218"
 diverged = "⇡⇣"
 
 [cmd_duration]
