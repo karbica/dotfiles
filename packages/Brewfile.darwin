@@ -1,0 +1,6 @@
+brew "jq"
+brew "fzf"
+brew "git"
+brew "stow"
+brew "curl"
+brew "starship"
