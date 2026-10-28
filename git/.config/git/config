@@ -2,3 +2,5 @@
     st = status
     br = branch
     co = checkout
+[push]
+    autoSetupRemote = true

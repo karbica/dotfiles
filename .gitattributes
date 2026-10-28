@@ -1,0 +1,3 @@
+# Force GitHub language detection for syntax highlighting
+packages/Brewfile.*        linguist-language=Ruby
+git/.config/git/config     linguist-language=INI

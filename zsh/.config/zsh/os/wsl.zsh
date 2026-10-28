@@ -11,3 +11,5 @@ alias open='explorer.exe'
 alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe -noprofile -command Get-Clipboard'
 export BROWSER=wsl-open
+
+eval "$(keychain --eval --quiet id_ed25519_github)"
